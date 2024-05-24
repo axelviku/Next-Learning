@@ -1,14 +1,15 @@
 
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { ObjectId } from 'mongodb';
 const prisma = new PrismaClient();
 
-export default async function handler(req, res) {
+export default async function handler(req : NextApiRequest, res : NextApiResponse) {
   if (req.method === 'GET') {
     const  {id}  = req.query;
-    console.log("VIkrant",id);
     try {
       const user = await prisma.user.findUnique({
-        where: { id},
+        where: { id: new ObjectId(id) }, 
       });
       if (user) {
         res.status(200).json(user);
