@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         } else {
             return res.send({ status: false, message: "User Not Found!!" });
         }
-    }else {
+    } else {
         return res.send({ status: false, message: "This method not allowed!!" });
     }
     } catch (error) {

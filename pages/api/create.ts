@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         if (req.method === 'POST') {
-            const { name, email, posts } = req.body;
+            const { name, email } = req.body;
             
             const user = await prisma.user.findUnique({
                 where: { email }
